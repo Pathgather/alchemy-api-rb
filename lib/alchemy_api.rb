@@ -16,7 +16,9 @@ require 'alchemy-api/taxonomy'
 require 'alchemy-api/image_tagging'
 
 module AlchemyAPI
-  BASE_URL = 'http://access.alchemyapi.com/calls/'
+  def self.base_url
+    "http#{'s' if config.use_ssl}://access.alchemyapi.com/calls/"
+  end
 
   def self.config
     Config

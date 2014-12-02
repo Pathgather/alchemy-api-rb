@@ -4,7 +4,11 @@ describe AlchemyAPI do
   subject { AlchemyAPI }
 
   it 'knows the alchemy api url' do
-    AlchemyAPI::BASE_URL.must_be :==, 'http://access.alchemyapi.com/calls/'
+    AlchemyAPI.base_url.must_be :==, 'http://access.alchemyapi.com/calls/'
+    AlchemyAPI.config.use_ssl = true
+    AlchemyAPI.base_url.must_be :==, 'https://access.alchemyapi.com/calls/'
+    AlchemyAPI.config.use_ssl = false
+    AlchemyAPI.base_url.must_be :==, 'http://access.alchemyapi.com/calls/'
   end
 
   it 'allows you to set the key directly' do

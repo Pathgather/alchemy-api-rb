@@ -3,6 +3,7 @@ module AlchemyAPI
     class << self
       attr_accessor :apikey
       attr_accessor :modes
+      attr_accessor :use_ssl
     end
 
     def self.add_mode(key, klass)
