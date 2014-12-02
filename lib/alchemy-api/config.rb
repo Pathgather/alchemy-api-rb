@@ -4,6 +4,7 @@ module AlchemyAPI
       attr_accessor :apikey
       attr_accessor :modes
       attr_accessor :use_ssl
+      attr_writer :faraday_options
     end
 
     def self.add_mode(key, klass)
@@ -20,6 +21,10 @@ module AlchemyAPI
 
     def self.output_mode
       @output_mode || :json
+    end
+
+    def self.faraday_options
+      @faraday_options ||= {}
     end
 
     def self.output_mode=(value)

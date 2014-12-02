@@ -38,7 +38,7 @@ module AlchemyAPI
     end
 
     def connection
-      @connection ||= Faraday.new(url: AlchemyAPI.base_url) do |builder|
+      @connection ||= Faraday.new(AlchemyAPI.base_url, AlchemyAPI::Config.faraday_options) do |builder|
         builder.adapter :excon
       end
     end
