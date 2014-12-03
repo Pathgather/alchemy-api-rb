@@ -10,6 +10,12 @@ module AlchemyAPI
 
       @response = connection.post(path, construct_body)
 
+      json = JSON.parse(@response.body)
+
+      if json['status'] == 'ERROR'
+        raise UnknownError, json['statusInfo']
+      end
+
       parsed_response
     end
 
